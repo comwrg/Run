@@ -56,7 +56,7 @@ public class Hook implements IXposedHookLoadPackage{
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 List<ActivityManager.RunningAppProcessInfo> list = (List<ActivityManager.RunningAppProcessInfo>) param.getResult();
-                for (int i=0; i<list.size(); ++i){
+                for (int i = list.size()-1; i >= 0; --i){
                     if (list.get(i).processName.toLowerCase().contains("xposed")){
                         list.remove(i);
                     }
